@@ -55,6 +55,7 @@ export default {
     getAreaData (city) {
       let cityStr = this.matchCityStr(city)
       this.allArea = []
+      this.pushLoadStack()
       axios.get(`/movie/cinema/?city=${cityStr}`).then(res => {
         let data = res.data.data.data.returnValue
         let regionOrder = data.regionOrder
@@ -66,12 +67,11 @@ export default {
             this.allArea.push(cinema)
           })
         })
-      })
+      }).then(this.completeLoad)
     },
     selectAreaAction (evt) {
       let str = evt.target.innerHTML.trim()
-      let reg = /([\u4e00-\u9fa5]*)\(/
-      this.area = reg.exec(str)[1]
+      this.area = str.split(' (')[0]
       this.showArea = false
       document.documentElement.style.overflow = 'scroll'
     },
@@ -87,7 +87,7 @@ export default {
     }
   },
   watch: {
-    area () {
+    'area' () {
       if (this.area === '全部区域') {
         this.updateAreaData({area: this.allArea})
       } else {

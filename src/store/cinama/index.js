@@ -6,6 +6,8 @@ export default {
   },
   mutations: cinamaMutations,
   getters: {
-    cinamaArea: state => state.area
+    cinamaArea: (state) => {
+      return state.area
+    }
   }
 }

@@ -29,12 +29,12 @@
 <script>
 import { mapMutations, mapGetters } from 'vuex'
 import city from '@/components/home/City'
-import cinamaArea from './CinamaArea'
+import CinamaArea from './CinamaArea'
 export default {
   name: 'cinama',
   components: {
     city,
-    'cinama-area': cinamaArea
+    'cinama-area': CinamaArea
   },
   computed: mapGetters([
     'cinamaArea'

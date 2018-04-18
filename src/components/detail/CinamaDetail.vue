@@ -24,7 +24,7 @@
         </div>
       </div>
       <div class="sel-date pr">
-        <ul>
+        <ul @click="selectDateTab">
           <li :data-num="item.num" v-for="item in playDate" :key="item.date">
             <span :data-num="item.num">{{item.date}}</span>
             <span :data-num="item.num" class="font-icon">惠</span>
